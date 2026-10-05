@@ -1,0 +1,136 @@
+[
+  {
+    "key": "base_url",
+    "help": "Only this origin and path prefix are allowed. Requests cannot replace the destination.",
+    "label": [
+      "API root URL",
+      "URL racine de l’API"
+    ]
+  },
+  {
+    "key": "allowed_methods",
+    "type": "json",
+    "rows": 2,
+    "help": "Explicit allowed methods. Default GET and HEAD; mutations need deliberate configuration.",
+    "label": [
+      "Allowed methods",
+      "Méthodes autorisées"
+    ]
+  },
+  {
+    "key": "auth_mode",
+    "type": "select",
+    "options": [
+      "none",
+      "bearer",
+      "header"
+    ],
+    "help": "The wallet resolves credentials server-side. Inputs never set authentication headers.",
+    "label": [
+      "Authentication",
+      "Authentification"
+    ]
+  },
+  {
+    "key": "secret_ref",
+    "help": "Secret reference, never the credential itself. Required for bearer or custom-header authentication.",
+    "label": [
+      "Wallet secret reference",
+      "Référence du secret wallet"
+    ]
+  },
+  {
+    "key": "auth_header",
+    "help": "Custom authentication header when mode is header, for example X-API-Key. Routing headers are forbidden.",
+    "label": [
+      "Authentication header",
+      "En-tête d’authentification"
+    ]
+  },
+  {
+    "key": "timeout_sec",
+    "type": "integer",
+    "min": 1,
+    "max": 120,
+    "help": "Total call deadline, including DNS, redirects and all pages. Cancellation terminates the owned worker.",
+    "label": [
+      "Total timeout (s)",
+      "Délai total (s)"
+    ]
+  },
+  {
+    "key": "max_request_bytes",
+    "type": "integer",
+    "advanced": true,
+    "min": 1024,
+    "max": 1048576,
+    "help": "Maximum UTF-8 JSON input bytes, including the body.",
+    "label": [
+      "Request limit (bytes)",
+      "Limite de requête (octets)"
+    ]
+  },
+  {
+    "key": "max_response_bytes",
+    "type": "integer",
+    "advanced": true,
+    "min": 1024,
+    "max": 4194304,
+    "help": "Maximum accumulated response body bytes across all pages. No truncated success.",
+    "label": [
+      "Response limit (bytes)",
+      "Limite de réponse (octets)"
+    ]
+  },
+  {
+    "key": "max_pages",
+    "type": "integer",
+    "advanced": true,
+    "min": 1,
+    "max": 8,
+    "help": "GET pagination via a constrained Link rel=next header; same origin and root. One page disables automatic pagination.",
+    "label": [
+      "Maximum pages",
+      "Nombre maximal de pages"
+    ]
+  },
+  {
+    "key": "follow_redirects",
+    "type": "boolean",
+    "advanced": true,
+    "help": "GET/HEAD only, at most two redirects, same allowed origin and root. Mutations are never replayed.",
+    "label": [
+      "Follow safe redirects",
+      "Suivre les redirections sûres"
+    ]
+  },
+  {
+    "key": "allow_private_network",
+    "type": "boolean",
+    "advanced": true,
+    "help": "Allow loopback/private LAN destinations explicitly. Link-local, metadata and multicast destinations remain denied.",
+    "label": [
+      "Allow private network",
+      "Autoriser le réseau privé"
+    ]
+  },
+  {
+    "key": "allow_insecure_http",
+    "type": "boolean",
+    "advanced": true,
+    "help": "Allow unencrypted HTTP without credentials. Authentication still requires verified HTTPS.",
+    "label": [
+      "Allow plain HTTP",
+      "Autoriser HTTP non chiffré"
+    ]
+  },
+  {
+    "key": "ca_file",
+    "advanced": true,
+    "help": "Optional existing PEM CA file for a private HTTPS service. Empty uses system trust; TLS verification cannot be disabled.",
+    "label": [
+      "Custom CA file",
+      "Fichier CA personnalisé"
+    ]
+  }
+]
